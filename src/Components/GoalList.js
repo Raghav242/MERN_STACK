@@ -4,7 +4,10 @@ const GoalList = props => {
     return(
         <ul className="goal-list">
             {
-                [<li>Hi</li>,<li>This works!</li>]
+                props.goals.map((goal) => {
+                    //every list rendered needs to have a key
+                    return <li key={goal.id}>{goal.text}</li>;
+                })
             }
       </ul>
     );
