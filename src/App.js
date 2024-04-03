@@ -12,10 +12,17 @@ const App = () => {
     {id: 'cg3',text:'Push to github'},
   ];
 
+  const addNewGoalHandler = (newGoal) => {
+    courseGoals.push(newGoal);  //this function is called from the child class
+    console.log(courseGoals);
+  }
+
   return (
     <div className='course-goals'>
       <h2>Course goals</h2>
-      <NewGoal />
+      <NewGoal onAddGoal = {addNewGoalHandler}/>  //we are passing a prop that is onAddGoal to the child Component
+                                                  //here pointer to the addGoalHandler is passed
+                                                  //from the child class, we can call this function through props
       <GoalList goals = {courseGoals}/>
     </div>
     );
