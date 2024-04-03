@@ -20,12 +20,13 @@ const App = () => {
   return (
     <div className='course-goals'>
       <h2>Course goals</h2>
-      <NewGoal onAddGoal = {addNewGoalHandler}/>  //we are passing a prop that is onAddGoal to the child Component
-                                                  //here pointer to the addGoalHandler is passed
-                                                  //from the child class, we can call this function through props
+      <NewGoal onAddGoal = {addNewGoalHandler}/> 
       <GoalList goals = {courseGoals}/>
     </div>
     );
+    //we are passing a prop that is onAddGoal to the child Component
+    //here pointer to the addGoalHandler is passed
+    //from the child class, we can call this function through props 
 }
 
 
