@@ -1,21 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
-import React from 'react';
+import React, {useState} from 'react';
 import GoalList from './Components/GoalList/GoalList';
 import NewGoal from './Components/NewGoal/NewGoal';
 
 
+
 const App = () => {
-  const courseGoals = [
-    {id: 'cg1',text:'Finish the course'},
-    {id: 'cg2',text:'Build the project'},
-    {id: 'cg3',text:'Push to github'},
-  ];
+  const [courseGoals, setCourseGoals] = useState(
+    [
+      {id: 'cg1',text:'Finish the course'},
+      {id: 'cg2',text:'Build the project'},
+      {id: 'cg3',text:'Push to github'},
+    ]
+  );
+
 
   const addNewGoalHandler = (newGoal) => {
-    courseGoals.push(newGoal);  //this function is called from the child class
-    console.log(courseGoals);
-  }
+    //setCourseGoals(courseGoals.concat(newGoal))
+    setCourseGoals((prevCourseGoals) => {
+      return prevCourseGoals.concat(newGoal)   // here prevCourseGoals is an array consisting of the old state
+    })                                          // we use this so that the delay in the state refresh won't have any effects in displaying the present state
+  }                                             // its better to use this approach if the present state doesnt depend on the previous state
 
   return (
     <div className='course-goals'>
